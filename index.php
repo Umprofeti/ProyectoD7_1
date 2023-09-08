@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery-3.7.1.min.js"></script>
     <title>Proyecto #1 Desarrollo 7</title>
 </head>
     <style>
@@ -42,7 +43,7 @@
     </style>
 <body>
     <main>
-        <form method="post" class="formularioContainer" name="Cheque" action="validacion.php">
+        <form class="formularioContainer" name="Cheque" id="formCheque">
             <div class="fRow">
                 <input type="text" name="NCheque" id="NCheque" placeholder="Número de Cheque">
                 <input type="date" name="Fecha" id="Fecha" placeholder="Fecha">
@@ -54,10 +55,26 @@
             </div>
             <input type="text" name="DGasto" id="DGasto"
             placeholder="Descripción del gasto">
-            <input type="submit" value="Enviar">
+            <button value="Enviar" onclick="sendForm()">Enviar</button>
         </form>
         <div class="msg "id="msg"></div>
+        <div class="msg "id="msgPHP"></div>
     </main>
     <script src="./index.js"></script>
+    <script>
+        $("form").on("submit",(e)=>{
+            e.preventDefault();
+        })
+        const sendForm = ()=> {
+                $.ajax({
+                    type: "POST",
+                    url: "validacion.php",
+                    data: $('form').serialize(),
+                    success: (resp) => {
+                        msgPHP.innerHTML = resp
+                    }
+                })
+            }
+    </script>
 </body>
 </html>

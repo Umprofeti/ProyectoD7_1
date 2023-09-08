@@ -3,7 +3,9 @@ var CantidadCheque = document.getElementById("Cant");
 var MensajeUsuario =  document.getElementById("msg");
 var cantidadString = document.getElementById("CantString");
 var cantidadInt = document.getElementById("Cant");
-
+var formCheque = document.getElementById("formCheque");
+var msgPHP = document.getElementById("msgPHP");
+var Nombre = document.getElementById("Nombre");
 
 const validarCampoNumero = (inputValue) => {
     let RegNum = new RegExp('([0-9)]+)');
@@ -56,22 +58,39 @@ const numAString = (n) => {
 
 }
 
-NumeroCheque.addEventListener('keyup', ()=> {
-     validarCampoNumero(NumeroCheque.value)
+NumeroCheque.addEventListener('input', ()=> {
+    let input = NumeroCheque.value
+    let regex = /[0-9+]+/u;
+    if(!regex.test(input)){
+        NumeroCheque.value = "";
+    }
 })
 
-CantidadCheque.addEventListener('keyup', () => {
-    validarCampoNumero(CantidadCheque.value)
+Nombre.addEventListener('input', () => {
+    let regex = /^[A-Za-záéíóúÁÉÍÓÚüÜñÑ\s]+$/u;
+    if (!regex.test(Nombre.value)) {
+        Nombre.value = "";
+    }
+
+});
+
+CantidadCheque.addEventListener('input', () => {
+    let input = $('input[name=Cant]').val()
+    let data = `cant=${input}`
+        $.ajax({
+            type: "POST",
+            url: "FN_numeroLetras.php",
+                        data: data,
+                        success: (resp) => {
+                            cantidadString.value =  resp
+                            msgPHP.innerHTML = resp
+                        }
+        })
 })
 
-cantidadInt.addEventListener('keyup', () => {
-    let stringNum = numAString(cantidadInt.value);
-   if(cantidadString.value == undefined){
-    cantidadString.value = ''
-   }else{
-    cantidadString.value = stringNum
+cantidadInt.addEventListener('input', () => {
+    let regex = new RegExp('[0-9+]+')
+   if(!regex.test(cantidadInt.value)){
+        cantidadInt.value = ""
    }
 })
-
-
-
