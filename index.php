@@ -7,6 +7,72 @@
     <title>Proyecto #1 Desarrollo 7</title>
 </head>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+         }
+         section{
+            position:relative;
+            width:100%;
+            height:100vh;
+            background:#3586ff;
+            overflow: hidden;
+         }
+         section.wave{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width:100%;
+            height: 100px;
+            background: url('wave.png');
+            background-size: 1000px 100px;
+         }
+         section.wave.wave1{
+            animation: animate 30s linear infinite;
+            z-index: 1000;
+            opacity: 1;
+            animation-delay: 0s;
+            bottom: 0;
+         }
+         section.wave.wave2{
+            animation: animate2 15s linear infinite;
+            z-index: 999;
+            opacity: 0.5;
+            animation-delay: -5s;
+            bottom: 10px;
+         }
+         section.wave.wave3{
+            animation: animate 30s linear infinite;
+            z-index: 998;
+            opacity: 0.2;
+            animation-delay: -2s;
+            bottom: 15px;
+         }
+         section.wave.wave4{
+            animation: animate2 5s linear infinite;
+            z-index: 997;
+            opacity: 0.7;
+            animation-delay: -5s;
+            bottom: 20px;
+         }
+        @keyframes animate{
+            0%{
+                background-position-x: 0;
+            }
+            100%{
+                background-position-x: 1000px;
+            }
+        }
+        @keyframes animate2{
+            0%{
+                background-position-x: 0;
+            }
+            100%{
+                background-position-x: -1000px;
+            }
+        }
+
+
         main {
             display: flex;
             width: 100%;
@@ -29,11 +95,7 @@
             border-radius:10px;  
             box-shadow:4px 4px 10px rgba(0,0,0,0.10);
         }
-        body{
-            background-image: url('https://static.vecteezy.com/system/resources/previews/007/872/268/non_2x/abstract-background-with-colorful-dynamic-effect-design-modern-wave-pattern-for-web-card-poster-illustration-free-vector.jpg'); 
-            background-size: cover; 
-            background-position: center; 
-        }
+       
         div.fRow{
             display: flex;
             flex-direction: row;
@@ -60,7 +122,7 @@
             border-radius:5px;
             width:50%;
          }
-
+       
         div.msg.MensajeError{
             border: solid 3px #FF0060;
             padding: 5px 10px 10px 5px;
@@ -77,24 +139,37 @@
                 <label for="Fecha">fecha:</label>
                 <input type="date" name="Fecha" id="Fecha" placeholder="Fecha">
             </div>
+
             <div class="fRow">
             <label for="Nombre">Nombre:</label>
             <input type="text" name="Nombre" id="Nombre" placeholder="Nombre">
             </div>
+
             <div class="fRow">
                 <label for="Cant">Cantidad:</label>
                 <input type="text" name="Cant" id="Cant" placeholder="Cantidad">
                 <input type="text" name="CantString" id="CantString" disabled>
             </div>
+
             <div class="fRow">
             <label for="DGasto">Descripción:</label>
             <input type="text" name="DGasto" id="DGasto"
             placeholder="Descripción del gasto">
             </div>
+
             <button value="Enviar" onclick="sendForm()">Enviar</button>
         </form>
         <div class="msg "id="msg"></div>
         <div class="msg "id="msgPHP"></div>
+
+    <section>
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="wave wave4"></div>
+    </section>
+
+
     </main>
     <script src="./index.js"></script>
     <script>
