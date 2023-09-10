@@ -85,7 +85,7 @@ CantidadCheque.addEventListener('input', () => {
                             cantidadString.value =  resp
                             msgPHP.innerHTML = resp
                         }
-        })
+        })   
 })
 
 cantidadInt.addEventListener('input', () => {
