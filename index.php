@@ -43,21 +43,32 @@
         align-items: center;
         text-align: left;
         font-family: 'Lato', sans-serif;
+        font-weight: bold; 
         gap: 5px;
         width: 100%;
+    }
+
+    div.fRow label {
+    margin-left: 10px;
     }
 
     input {
         width: 90%;
         border: 0;
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.10);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.20);
         border-radius: 15px;
         padding: 15px;
     }
 
+    input[type="date"] {
+    font-family: 'Lato', sans-serif; 
+    font-weight: bold;
+    text-transform: uppercase;
+    }
+
     button {
         margin: 0 auto;
-        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.10);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.20);
         padding: 10px;
         border: none;
         background-color: #fff;
@@ -66,17 +77,16 @@
         border-radius: 5px;
         width: 20%;
         font-family: 'Lato', sans-serif;
+        font-weight: bold; 
     }
 
     div.msg.MensajeError {
         border: solid 3px #FF0060;
         padding: 5px 10px 10px 5px;
         font-family: 'Lato', sans-serif;
+        font-weight: bold; 
         background: rgba(255, 87, 51, 0.2);
     }
-
-
-
 
     body {
         margin: 0;
@@ -208,9 +218,9 @@
         <main>
             <form class="formularioContainer" name="Cheque" id="formCheque">
                 <div class="fRow">
-                    <label for="Ncheqe">Nºcheque</label>
+                    <label for="Ncheqe">Nºcheque:</label>
                     <input type="text" name="NCheque" id="NCheque">
-                    <label for="Fecha">fecha:</label>
+                    <label for="Fecha">Fecha:</label>
                     <input type="date" name="Fecha" id="Fecha">
                 </div>
 
