@@ -48,6 +48,18 @@
         width: 100%;
     }
 
+    div.CantString{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-align: right;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold; 
+        gap: 5px;
+        width: 87%;
+        margin-left: 15%;
+    }
+
     div.fRow label {
     margin-left: 10px;
     }
@@ -216,7 +228,7 @@
         <div class="inner-header flex">
         </div>
         <main>
-            <form class="formularioContainer" name="Cheque" id="formCheque">
+            <form class="formularioContainer" name="Cheque" id="formCheque" autocomplete="off">
                 <div class="fRow">
                     <label for="Ncheqe">Nºcheque:</label>
                     <input type="text" name="NCheque" id="NCheque">
@@ -226,18 +238,23 @@
 
                 <div class="fRow">
                     <label for="Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" id="Nombre" placeholder="Nombre">
+                    <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" autocomplete="off">
                 </div>
 
                 <div class="fRow">
                     <label for="Cant">Cantidad:</label>
-                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad">
+                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off">
+                </div>
+
+                <div class="CantString">
+                    <label for="CantString"></label>
                     <input type="text" name="CantString" id="CantString" disabled>
                 </div>
 
+
                 <div class="fRow">
                     <label for="DGasto">Descripción:</label>
-                    <input type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto">
+                    <input type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto" autocomplete="off">
                 </div>
 
                 <button value="Enviar" onclick="sendForm()">Enviar</button>
