@@ -52,12 +52,13 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        text-align: right;
+        text-align: left;
         font-family: 'Lato', sans-serif;
         font-weight: bold; 
         gap: 5px;
-        width: 87%;
-        margin-left: 15%;
+        width: 104%;
+        
+        
     }
 
     div.fRow label {
@@ -103,8 +104,6 @@
     body {
         margin: 0;
     }
-
-
 
     .header {
         position: relative;
@@ -219,7 +218,7 @@
         .waves {
             height: 40px;
             min-height: 40px;
-        }
+        } 
     }
 </style>
 
