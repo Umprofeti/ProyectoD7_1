@@ -43,26 +43,26 @@
         align-items: center;
         text-align: left;
         font-family: 'Lato', sans-serif;
-        font-weight: bold; 
+        font-weight: bold;
         gap: 5px;
         width: 100%;
     }
 
-    div.CantString{
+    div.CantString {
         display: flex;
         flex-direction: row;
         align-items: center;
         text-align: left;
         font-family: 'Lato', sans-serif;
-        font-weight: bold; 
+        font-weight: bold;
         gap: 5px;
         width: 104%;
-        
-        
+
+
     }
 
     div.fRow label {
-    margin-left: 10px;
+        margin-left: 10px;
     }
 
     input {
@@ -74,9 +74,9 @@
     }
 
     input[type="date"] {
-    font-family: 'Lato', sans-serif; 
-    font-weight: bold;
-    text-transform: uppercase;
+        font-family: 'Lato', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
     button {
@@ -90,14 +90,14 @@
         border-radius: 5px;
         width: 20%;
         font-family: 'Lato', sans-serif;
-        font-weight: bold; 
+        font-weight: bold;
     }
 
     div.msg.MensajeError {
         border: solid 3px #FF0060;
         padding: 5px 10px 10px 5px;
         font-family: 'Lato', sans-serif;
-        font-weight: bold; 
+        font-weight: bold;
         background: rgba(255, 87, 51, 0.2);
     }
 
@@ -108,10 +108,55 @@
     .header {
         position: relative;
         text-align: center;
-        background: -o-linear-gradient(30deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
-        background: linear-gradient(60deg, rgba(84, 58, 183, 1) 0%, rgba(0, 172, 193, 1) 100%);
-        color: #fff;
+        background: linear-gradient( 40deg, #543ab7, #00acc1);
+        background-size: 400% 400%;
+        -webkit-animation: Animation 10s ease infinite;
+        -moz-animation: Animation 10s ease infinite;
+        animation: Animation 10s ease infinite;
     }
+
+    @-webkit-keyframes Animation {
+        0% {
+            background-position: 50% 0%
+        }
+
+        50% {
+            background-position: 50% 100%
+        }
+
+        100% {
+            background-position: 50% 0%
+        }
+    }
+
+    @-moz-keyframes Animation {
+        0% {
+            background-position: 50% 0%
+        }
+
+        50% {
+            background-position: 50% 100%
+        }
+
+        100% {
+            background-position: 50% 0%
+        }
+    }
+
+    @keyframes Animation {
+        0% {
+            background-position: 50% 0%
+        }
+
+        50% {
+            background-position: 50% 100%
+        }
+
+        100% {
+            background-position: 50% 0%
+        }
+    }
+
 
     .inner-header {
         height: 20vh;
@@ -218,7 +263,7 @@
         .waves {
             height: 40px;
             min-height: 40px;
-        } 
+        }
     }
 </style>
 
