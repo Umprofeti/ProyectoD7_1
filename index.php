@@ -56,7 +56,7 @@
         font-family: 'Lato', sans-serif;
         font-weight: bold;
         gap: 5px;
-        width: 104%;
+        width: 107%;
 
 
     }
