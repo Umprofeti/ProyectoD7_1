@@ -56,7 +56,7 @@
         font-family: 'Lato', sans-serif;
         font-weight: bold;
         gap: 5px;
-        width: 107%;
+        width: 106%;
 
 
     }
@@ -275,7 +275,7 @@
             <form class="formularioContainer" name="Cheque" id="formCheque" autocomplete="off">
                 <div class="fRow">
                     <label for="Ncheqe">Nºcheque:</label>
-                    <input type="text" name="NCheque" id="NCheque">
+                    <input type="text" name="NCheque" id="NCheque" maxlength="5">
                     <label for="Fecha">Fecha:</label>
                     <input type="date" name="Fecha" id="Fecha">
                 </div>
@@ -287,7 +287,7 @@
 
                 <div class="fRow">
                     <label for="Cant">Cantidad:</label>
-                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off">
+                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="10">
                 </div>
 
                 <div class="CantString">
