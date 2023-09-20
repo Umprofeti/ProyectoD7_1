@@ -25,7 +25,7 @@
         background-color: white;
         margin: 5% auto;
         display: flex;
-        width: 40%;
+        width: 50%;
         justify-content: center;
         padding: 10px 20px 20px 10px;
         align-items: start;
@@ -56,7 +56,7 @@
         font-family: 'Lato', sans-serif;
         font-weight: bold;
         gap: 5px;
-        width: 106%;
+        width: 107%;
 
 
     }
@@ -159,7 +159,7 @@
 
 
     .inner-header {
-        height: 20vh;
+        height: 10vh;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -167,7 +167,7 @@
 
     .content {
         position: relative;
-        height: 20vh;
+        height: 10vh;
         text-align: center;
         background-color: #fff;
     }
@@ -188,7 +188,7 @@
     .waves {
         position: relative;
         width: 100%;
-        height: 15vh;
+        height: 10vh;
         margin-bottom: -7px;
         min-height: 100px;
         max-height: 100px;
@@ -261,7 +261,7 @@
         }
 
         .waves {
-            height: 40px;
+            height: 100px;
             min-height: 40px;
         }
     }
@@ -275,7 +275,7 @@
             <form class="formularioContainer" name="Cheque" id="formCheque" autocomplete="off">
                 <div class="fRow">
                     <label for="Ncheqe">Nºcheque:</label>
-                    <input type="text" name="NCheque" id="NCheque" maxlength="5">
+                    <input type="text" name="NCheque" id="NCheque" maxlength="6">
                     <label for="Fecha">Fecha:</label>
                     <input type="date" name="Fecha" id="Fecha">
                 </div>
@@ -287,7 +287,7 @@
 
                 <div class="fRow">
                     <label for="Cant">Cantidad:</label>
-                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="10">
+                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="7">
                 </div>
 
                 <div class="CantString">
