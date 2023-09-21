@@ -65,11 +65,11 @@ function translate($n){
                 $word = trim(translate(intval($n / 100000))).'cientos un Mil ' . translate($n % 1000);
             }elseif(($n-101_000)== 0){
                 $word = 'Ciento un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000) == 400000){
+            }elseif(($n-101_000) >= 400000 && ($n-101_000) < 500000){
                 $word = 'Quinientos un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000) == 600000){
-                $word = 'Setecientos un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000) == 800000){
+            }elseif(($n-101_000) >= 600000 && ($n-101_000) < 700000){
+                $word = 'Setecientos un Mil '. translate($n % 1000);
+            }elseif(($n-101_000) >= 800000 && ($n-101_000) < 900000){
                 $word = 'Novecientos un Mil ' . translate($n % 1000);
             }
             else{
