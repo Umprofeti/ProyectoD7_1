@@ -61,7 +61,20 @@ function translate($n){
             $word = 'Mil ' . translate($n % 1000);
         }
         elseif($n >= 2000){
-            $word = trim(translate(intval($n / 1000))) . ' Mil ' . translate($n % 1000);
+            if(($n-101_000) == 100000 || ($n-101_000) == 200000 || ($n-101_000) == 300000 ||($n-101_000) == 500000  || ($n-101_000) == 700000 || ($n-101_000) == 900000 ){
+                $word = trim(translate(intval($n / 100000))).'cientos un Mil ' . translate($n % 1000);
+            }elseif(($n-101_000)== 0){
+                $word = 'Ciento un Mil ' . translate($n % 1000);
+            }elseif(($n-101_000) == 400000){
+                $word = 'Quinientos un Mil ' . translate($n % 1000);
+            }elseif(($n-101_000) == 600000){
+                $word = 'Setecientos un Mil ' . translate($n % 1000);
+            }elseif(($n-101_000) == 800000){
+                $word = 'Novecientos un Mil ' . translate($n % 1000);
+            }
+            else{
+                $word = trim(translate(intval($n / 1000))) . ' Mil ' . translate($n % 1000);
+            }
         }
     } elseif ($n < 1000000000) {
         if($n >= 1000000 && $n < 2000000){
@@ -85,9 +98,9 @@ if($CantString != ''){
 
         $decimal = (intval($CantString) - $CantString);
         if(abs($decimal*100) == 0){
-            //echo ucfirst($result);
+            echo ucfirst($result);
         }else{
-            //echo ucfirst($result) . ' con ' . round(abs($decimal * 100)) . '/100';
+            echo ucfirst($result) . ' con ' . round(abs($decimal * 100)) . '/100';
         }
     }  
 }

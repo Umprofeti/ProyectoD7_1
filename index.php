@@ -36,12 +36,7 @@
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.10);
         color: #000;
     }
-    @media (max-width: 768px) {
-        form.formularioContainer {
-            width: 95%;
-        }
-    }
-
+    
     div.fRow {
         display: flex;
         flex-direction: row;
@@ -164,7 +159,7 @@
 
 
     .inner-header {
-        height: 10vh;
+        height: 0vh;
         width: 100%;
         margin: 0;
         padding: 0;
@@ -172,7 +167,7 @@
 
     .content {
         position: relative;
-        height: 10vh;
+        height: 0vh;
         text-align: center;
         background-color: #fff;
     }
