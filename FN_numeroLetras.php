@@ -6,8 +6,11 @@ function translate($n){
         return 'Valor no numerico';
     }
     $single_digit = ['', 'Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis', 'Siete', 'Ocho', 'Nueve'];
+    /*foreach ($single_digit as &$word) {
+        $word = strtolower($word);
+    }*/
     $double_digit = ['Diez', 'Once', 'Doce', 'Trece', 'Catorce', 'Quince', 'Dieciseis', 'Diecisiete', 'Dieciocho', 'Diecinueve'];
-    $below_hundred = ['Veinte', 'Treinta', 'Cuarenta', 'Cincuenta', 'Sesenta', 'Setenta', 'Ochenta', 'Noventa'];
+    $below_hundred = ['','','Veinti', 'Treinta', 'Cuarenta', 'Cincuenta', 'Sesenta', 'Setenta', 'Ochenta', 'Noventa'];
 
     if ($n < 0) {
         return false;
@@ -22,12 +25,16 @@ function translate($n){
         $word = $single_digit[intval($n)];
     } elseif ($n < 20) {
         $word = $double_digit[$n - 10] . ' ';
-    } elseif ($n < 100) {
+    } elseif($n==20){ //Veinte es un caso especial
+        $word='Veinte';
+    } elseif($n<30){
+        $word=$below_hundred[2].$single_digit[$n-20];
+    }elseif ($n < 100) {
         $rem = translate($n % 10);
         if($rem != ''){
-            $word = $below_hundred[($n - $n % 10) / 10 - 2] . ' y ' . $rem;
+            $word = $below_hundred[intval($n/10 )] . ' y ' . $rem;
         }else{
-            $word = $below_hundred[($n - $n % 10) / 10 - 2] . '  ' . $rem;
+            $word = $below_hundred[intval($n/10 )] . '  ' . $rem;
         }
     } elseif ($n < 1000) {
         if($n == 100 ){
@@ -46,7 +53,7 @@ function translate($n){
                 $word = 'Novecientos ' . translate($n % 100);
             }
             else{
-                $word = $single_digit[intval($n / 100)] . ' Cientos ' . translate($n % 100);
+                $word = $single_digit[intval($n / 100)] . 'cientos ' . translate($n % 100);
             }
         }
     } elseif ($n < 1000000) {
@@ -78,9 +85,9 @@ if($CantString != ''){
 
         $decimal = (intval($CantString) - $CantString);
         if(abs($decimal*100) == 0){
-            echo $result;
+            //echo ucfirst($result);
         }else{
-            echo $result . ' Con ' . round(abs($decimal*100)).'/100';
+            //echo ucfirst($result) . ' con ' . round(abs($decimal * 100)) . '/100';
         }
     }  
 }
