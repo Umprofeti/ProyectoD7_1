@@ -52,8 +52,19 @@ CantidadCheque.addEventListener('input', () => {
 
 cantidadInt.addEventListener('input', () => {
     let inputValue = cantidadInt.value;
-    let sanitizedValue = inputValue.replace(/[^0-9,]/g, '');//este deberi evitar que characteres sean introducidos
-    if (inputValue !== sanitizedValue) {
+    let sanitizedValue = inputValue.replace(/[^0-9.]/, '');//este deberia evitar que characteres sean introducidos
+    /* if (inputValue != sanitizedValue) {
+        cantidadInt.value = sanitizedValue;
+    } */
+
+    if(isNaN(inputValue)){
         cantidadInt.value = sanitizedValue;
     }
-});
+})
+NumeroCheque.addEventListener('input', () => {
+    let inputValue = NumeroCheque.value;
+    let sanitizedValue = inputValue.replace(/[^0-9,]/g, '');//este deberia evitar que characteres sean introducidos
+    if (inputValue !== sanitizedValue) {
+        NumeroCheque.value = sanitizedValue;
+    }
+})

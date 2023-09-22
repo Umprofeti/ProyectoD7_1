@@ -110,7 +110,7 @@ function translate($n) {
 
 if($CantString != ''){
     if(is_numeric($CantString)){
-        $result = translate($CantString);
+        $result = translate(intval($CantString));
 
         $decimal = (intval($CantString) - $CantString);
         if(abs($decimal*100) == 0){

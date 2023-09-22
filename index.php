@@ -301,7 +301,7 @@
                     <input type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto" autocomplete="off">
                 </div>
 
-                <button value="Enviar" onclick="sendForm()">Enviar</button>
+                <!-- <button value="Enviar" onclick="sendForm()">Enviar</button> -->
             </form>
             <div class="msg " id="msg"></div>
             <div class="msg " id="msgPHP"></div>
