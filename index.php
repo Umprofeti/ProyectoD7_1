@@ -275,30 +275,30 @@
             <form class="formularioContainer" name="Cheque" id="formCheque" autocomplete="off">
                 <div class="fRow">
                     <label for="Ncheqe">Nºcheque:</label>
-                    <input type="text" name="NCheque" id="NCheque" maxlength="6">
+                    <input type="text" name="NCheque" id="NCheque" maxlength="6" require>
                     <label for="Fecha">Fecha:</label>
-                    <input type="date" name="Fecha" id="Fecha" readonly>
+                    <input type="date" name="Fecha" id="Fecha" require>
                 </div>
 
                 <div class="fRow">
                     <label for="Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" autocomplete="off">
+                    <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" autocomplete="off" require>
                 </div>
 
                 <div class="fRow">
                     <label for="Cant">Cantidad:</label>
-                    <input type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="7">
+                    <input require type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="10">
                 </div>
 
                 <div class="CantString">
                     <label for="CantString"></label>
-                    <input type="text" name="CantString" id="CantString" disabled>
+                    <input require type="text" name="CantString" id="CantString" disabled>
                 </div>
 
 
                 <div class="fRow">
                     <label for="DGasto">Descripción:</label>
-                    <input type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto" autocomplete="off">
+                    <input require type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto" autocomplete="off">
                 </div>
 
                 <!-- <button value="Enviar" onclick="sendForm()">Enviar</button> -->
@@ -312,11 +312,27 @@
             $("form").on("submit", (e) => {
                 e.preventDefault();
             })
+            const formData = new FormData();
+            formData.append("NCheque", $("#NCheque").val())
+            formData.append("Fecha", $("#Fecha").val())
+            formData.append("Nombre", $("#Nombre").val())
+            formData.append("Cant", $("#Cant").val())
+            formData.append("CantString", $("#CantString").val())
+            formData.append("DGasto", $("#DGasto").val())
+
             const sendForm = () => {
+                console.log("Enviado")
                 $.ajax({
                     type: "POST",
                     url: "validacion.php",
-                    data: $('form').serialize(),
+                    data: {
+                        "NCheque": $("#NCheque").val(),
+                        "Nombre": $("#Nombre").val(),
+                        "Fecha": $("#Fecha").val(),
+                        "Cant": $("#Cant").val(),
+                        "CantString": $("#CantString").val(),
+                        "DGasto": $("#DGasto").val()
+                    },
                     success: (resp) => {
                         msgPHP.innerHTML = resp
                     }
@@ -324,7 +340,7 @@
             }
         </script>
 
-         <script>
+         <!-- <script>
              const hoy= new Date();
              const año= hoy.getFullYear();
              const mes=String(hoy.getMonth()+1).padStart(2,'0');
@@ -332,7 +348,7 @@
              const currentDate=`${año}-${mes}-${dia}`
              document.getElementById('Fecha').min=currentDate;
              document.getElementById('Fecha').valueAsDate = new Date();
-        </script>
+        </script> -->
         
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">

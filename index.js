@@ -6,7 +6,7 @@ var cantidadInt = document.getElementById("Cant");
 var formCheque = document.getElementById("formCheque");
 var msgPHP = document.getElementById("msgPHP");
 var Nombre = document.getElementById("Nombre");
-
+var DGasto = document.getElementById("DGasto");
 const validarCampoNumero = (inputValue) => {
     let RegNum = new RegExp('([0-9)]+)');
     let result = RegNum.test(inputValue)
@@ -19,6 +19,7 @@ const validarCampoNumero = (inputValue) => {
     }
     
 }
+
 
 NumeroCheque.addEventListener('input', ()=> {
     let input = NumeroCheque.value
@@ -60,6 +61,15 @@ cantidadInt.addEventListener('input', () => {
     if(isNaN(inputValue)){
         cantidadInt.value = sanitizedValue;
     }
+    // Divide el valor en dos partes: parte antes del punto y parte después del punto
+    let parts = sanitizedValue.split('.');
+    
+    // Si hay más de una parte (es decir, hay un punto decimal), formatea la parte después del punto a dos caracteres
+    if (parts.length > 1) {
+        parts[1] = parts[1].slice(0, 2); // Limita la parte después del punto a dos caracteres
+    }
+    // Vuelve a unir las partes y establece el valor formateado en el campo de entrada
+    cantidadInt.value = parts.join('.');
 })
 NumeroCheque.addEventListener('input', () => {
     let inputValue = NumeroCheque.value;
@@ -68,3 +78,29 @@ NumeroCheque.addEventListener('input', () => {
         NumeroCheque.value = sanitizedValue;
     }
 })
+
+DGasto.addEventListener('focusout', ()=> {
+    sendForm();
+})
+
+const datepicker = document.querySelector("#Fecha");
+
+datepicker.addEventListener("focusout", function() {
+    let data = $("#Fecha").val()
+    $.ajax({
+        type: "POST",
+        url: "ValidacionFecha.php",
+                    data: {
+                        "Fecha": data 
+                    },
+                    success: (resp) => {
+                        cantidadString.value =  resp
+                        msgPHP.innerHTML = resp
+                    }
+    })  
+  });
+  
+  
+function isLeapYear(year) {
+    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
