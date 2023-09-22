@@ -51,8 +51,10 @@ CantidadCheque.addEventListener('input', () => {
 })
 
 cantidadInt.addEventListener('input', () => {
-    let regex = new RegExp('[0-9+]+')
-   if(!regex.test(cantidadInt.value)){
-        cantidadInt.value = ""
-   }
-})
+    let inputValue = cantidadInt.value;
+    let sanitizedValue = inputValue.replace(/[^0-9]/g, '');//este deberi evitar que characteres sean introducidos
+
+    if (inputValue !== sanitizedValue) {
+        cantidadInt.value = sanitizedValue;
+    }
+});
