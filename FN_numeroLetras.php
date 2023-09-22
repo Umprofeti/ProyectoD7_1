@@ -97,10 +97,14 @@ function translate($n) {
         $Nmillones = intval($n / 1000000);
         $resto = $n % 1000000;
         if($Nmillones == 1){
-           return $resultado .= 'Un Millón ' . translate($resto);
+           $resultado .= 'Un Millón ';
         }else{
-           return $resultado .= translate($Nmillones). ' Millones '. translate($resto);;
+           $resultado .= translate($Nmillones). ' Millones ';
         }
+        if ($resto > 0) {
+            $resultado .= ' ' . translate($resto);
+        }
+        return $resultado;
     }
 } 
 
