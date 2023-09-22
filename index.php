@@ -277,7 +277,7 @@
                     <label for="Ncheqe">Nºcheque:</label>
                     <input type="text" name="NCheque" id="NCheque" maxlength="6">
                     <label for="Fecha">Fecha:</label>
-                    <input type="date" name="Fecha" id="Fecha">
+                    <input type="date" name="Fecha" id="Fecha" readonly>
                 </div>
 
                 <div class="fRow">
@@ -323,6 +323,7 @@
                 })
             }
         </script>
+
          <script>
              const hoy= new Date();
              const año= hoy.getFullYear();
@@ -330,6 +331,7 @@
              const dia=String(hoy.getMonth()).padStart(2,'0');
              const currentDate=`${año}-${mes}-${dia}`
              document.getElementById('Fecha').min=currentDate;
+             document.getElementById('Fecha').valueAsDate = new Date();
         </script>
         
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
