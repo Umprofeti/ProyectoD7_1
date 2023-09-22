@@ -1,97 +1,109 @@
 <?php 
 $CantString =  $_POST['cant'];
 // Metodo para sacar la cadena de texto a partir de un número
-function translate($n){
-    if(!is_numeric($n)){
-        return 'Valor no numerico';
+function translate($n) {
+    if (!is_numeric($n)) {
+        return 'Valor no numérico';
     }
-    $single_digit = ['', 'Uno', 'Dos', 'Tres', 'Cuatro', 'Cinco', 'Seis', 'Siete', 'Ocho', 'Nueve'];
-    /*foreach ($single_digit as &$word) {
-        $word = strtolower($word);
-    }*/
-    $double_digit = ['Diez', 'Once', 'Doce', 'Trece', 'Catorce', 'Quince', 'Dieciseis', 'Diecisiete', 'Dieciocho', 'Diecinueve'];
-    $below_hundred = ['','','Veinti', 'Treinta', 'Cuarenta', 'Cincuenta', 'Sesenta', 'Setenta', 'Ochenta', 'Noventa'];
 
+    $unidades = [
+        0 => 'cero', 1 => 'uno', 2 => 'dos', 3 => 'tres', 4 => 'cuatro', 5 => 'cinco',
+        6 => 'seis', 7 => 'siete', 8 => 'ocho', 9 => 'nueve'
+    ];
+
+    $diezNueve = [
+        10 => 'diez', 11 => 'once', 12 => 'doce', 13 => 'trece', 14 => 'catorce', 15 => 'quince',
+        16 => 'dieciséis', 17 => 'diecisiete', 18 => 'dieciocho', 19 => 'diecinueve'
+    ];
+
+    $veintiNueve = [
+        20 => 'Veinte', 21 => 'Veintiuno', 22 => 'Veintidos', 23 => 'Veintitres',
+        24 => 'Veinticuatro', 25 => 'Veinticinco', 26 => 'Veintiséis', 27 => 'Veintisiete',
+        28 => 'Veintiocho', 29 => 'Veintinueve'
+    ];
+    
+
+    $decenas = [
+        2 => 'veinti', 3 => 'treinta', 4 => 'cuarenta', 5 => 'cincuenta',
+        6 => 'sesenta', 7 => 'setenta', 8 => 'ochenta', 9 => 'noventa'
+    ];
+
+    $centenas = [
+        1 => 'ciento', 2 => 'doscientos', 3 => 'trescientos', 4 => 'cuatrocientos', 5 => 'quinientos',
+        6 => 'seiscientos', 7 => 'setecientos', 8 => 'ochocientos', 9 => 'novecientos'
+    ];
+    
+    $cientoUnMil = [
+        101 => 'Ciento un', 201 => 'Doscientos Un',
+        301 => 'Trescientos Un', 401 => 'Cuatrocientos Un',
+        501 => 'Quinientos Un', 601 => 'Seiscientos Un',
+        701 => 'Setecientos Un', 801 => 'Ochocientos Un',
+        901 => 'Novecientos Un'
+    ];
+    
     if ($n < 0) {
-        return false;
+        return 'Número negativo no soportado';
     }
-    /* if ($n === 0) {
-        return 'Cero';
-    } */
-
-    $word = '';
 
     if ($n < 10) {
-        $word = $single_digit[intval($n)];
+        return $unidades[$n];
     } elseif ($n < 20) {
-        $word = $double_digit[$n - 10] . ' ';
-    } elseif($n==20){ //Veinte es un caso especial
-        $word='Veinte';
-    } elseif($n<30){
-        $word=$below_hundred[2].$single_digit[$n-20];
-    }elseif ($n < 100) {
-        $rem = translate($n % 10);
-        if($rem != ''){
-            $word = $below_hundred[intval($n/10 )] . ' y ' . $rem;
-        }else{
-            $word = $below_hundred[intval($n/10 )] . '  ' . $rem;
+        return $diezNueve[$n];
+    }elseif($n >= 20 && $n < 30){
+        return $veintiNueve[$n];
+    } 
+    elseif ($n < 100) {
+        $decena = intval($n / 10);
+        $unidad = $n % 10;
+        $resultado = $decenas[$decena];
+        if ($unidad > 0) {
+            $resultado .= ' y ' . $unidades[$unidad];
         }
+        return $resultado;
     } elseif ($n < 1000) {
-        if($n == 100 ){
-            $word ='Cien';
-        }else{
-            if($n < 200){
-                $word = 'Ciento ' . translate($n % 100);
-            } 
-            elseif($n >= 500 && $n < 600){
-                $word = 'Quinientos ' . translate($n % 100);
+        if ($n == 100) {
+            return 'cien';
+        } else {
+            $centena = intval($n / 100);
+            $resto = $n % 100;
+            $resultado = $centenas[$centena];
+            if ($resto > 0) {
+                $resultado .= ' ' . translate($resto);
             }
-            elseif ($n >= 700 && $n < 800){
-                $word = 'Setecientos ' . translate($n % 100);
-            }
-            elseif ($n >= 900 && $n < 1000){
-                $word = 'Novecientos ' . translate($n % 100);
-            }
-            else{
-                $word = $single_digit[intval($n / 100)] . 'cientos ' . translate($n % 100);
-            }
+            return $resultado;
         }
     } elseif ($n < 1000000) {
-        if($n >= 1000 && $n < 2000){
-            $word = 'Mil ' . translate($n % 1000);
-        }
-        elseif($n >= 2000){
-            if(($n-101_000) == 100000 || ($n-101_000) == 200000 || ($n-101_000) == 300000 ||($n-101_000) == 500000  || ($n-101_000) == 700000 || ($n-101_000) == 900000 ){
-                $word = trim(translate(intval($n / 100000))).'cientos un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000)== 0){
-                $word = 'Ciento un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000) >= 400000 && ($n-101_000) < 500000){
-                $word = 'Quinientos un Mil ' . translate($n % 1000);
-            }elseif(($n-101_000) >= 600000 && ($n-101_000) < 700000){
-                $word = 'Setecientos un Mil '. translate($n % 1000);
-            }elseif(($n-101_000) >= 800000 && ($n-101_000) < 900000){
-                $word = 'Novecientos un Mil ' . translate($n % 1000);
-            }
-            else{
-                $word = trim(translate(intval($n / 1000))) . ' Mil ' . translate($n % 1000);
+        $miles = intval($n / 1000);
+        $resto = $n % 1000;
+        $resultado = '';
+        if ($miles == 1) {
+            $resultado .= 'mil';
+        } elseif ($miles > 1) {
+            if($miles == 101 || $miles == 201 || $miles == 301 || $miles == 401 || $miles == 501 || $miles == 601 || $miles == 701 || $miles == 801 || $miles == 901){
+                $resultado .= $cientoUnMil[$miles] . ' mil'; 
+            }else{
+                $resultado .= translate($miles) . ' mil';
             }
         }
-    } elseif ($n < 1000000000) {
-        if($n >= 1000000 && $n < 2000000){
-            $word = ' Un Millon ' . translate($n % 1000000);
-        }else{
-            $word = trim(translate(intval($n / 1000000))) . ' Millones ' . translate($n % 1000000);   
+        if ($resto > 0) {
+            $resultado .= ' ' . translate($resto);
         }
+        return $resultado;
     } else {
-        if($n >=1000000000 && $n <2000000000){
-            $word = ' Mil millones ' . translate($n % 1000000000);
+        $resultado = '';
+        $millones = [
+            1 => 'millón', 1000000 => 'millones'
+        ];
+        $Nmillones = intval($n / 1000000);
+        $resto = $n % 1000000;
+        if($Nmillones == 1){
+           return $resultado .= 'Un Millón ' . translate($resto);
         }else{
-            $word = trim(translate(intval($n / 1000000000))) . ' Mil millones ' . translate($n % 1000000000);
+           return $resultado .= translate($Nmillones). ' Millones '. translate($resto);;
         }
     }
+} 
 
-    return $word;
-}
 if($CantString != ''){
     if(is_numeric($CantString)){
         $result = translate($CantString);
