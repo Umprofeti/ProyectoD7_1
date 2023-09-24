@@ -36,7 +36,7 @@
         box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.10);
         color: #000;
     }
-    
+
     div.fRow {
         display: flex;
         flex-direction: row;
@@ -93,12 +93,20 @@
         font-weight: bold;
     }
 
-    div.msg.MensajeError {
-        border: solid 3px #FF0060;
-        padding: 5px 10px 10px 5px;
+    div.msg {
+        margin: 1% auto;
+        display: flex;
+        flex-direction: center;
+        align-items: center;
+        max-width: 50%;
+        padding: 2%;
+        text-align: center;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        border: 2px solid #FF0000;
+        border-radius: 15px;
         background: rgba(255, 87, 51, 0.2);
+
     }
 
     body {
@@ -108,7 +116,7 @@
     .header {
         position: relative;
         text-align: center;
-        background: linear-gradient( 40deg, #543ab7, #00acc1);
+        background: linear-gradient(40deg, #543ab7, #00acc1);
         background-size: 400% 400%;
         -webkit-animation: Animation 10s ease infinite;
         -moz-animation: Animation 10s ease infinite;
@@ -282,12 +290,12 @@
 
                 <div class="fRow">
                     <label for="Nombre">Nombre:</label>
-                    <input type="text" name="Nombre" id="Nombre" placeholder="Nombre" autocomplete="off" require>
+                    <input type="text" name="Nombre" id="Nombre" autocomplete="off" require>
                 </div>
 
                 <div class="fRow">
                     <label for="Cant">Cantidad:</label>
-                    <input require type="text" name="Cant" id="Cant" placeholder="Cantidad" autocomplete="off" maxlength="10">
+                    <input require type="text" name="Cant" id="Cant" autocomplete="off" maxlength="10">
                 </div>
 
                 <div class="CantString">
@@ -298,13 +306,14 @@
 
                 <div class="fRow">
                     <label for="DGasto">Descripción:</label>
-                    <input require type="text" name="DGasto" id="DGasto" placeholder="Descripción del gasto" autocomplete="off">
+                    <input require type="text" name="DGasto" id="DGasto" autocomplete="off">
                 </div>
-
+                <!-- Mensajes de error -->
+                <!-- <div class="msg " id="msg"></div> -->
+                <div class="msg " id="msgPHP"></div>
                 <!-- <button value="Enviar" onclick="sendForm()">Enviar</button> -->
             </form>
-            <div class="msg " id="msg"></div>
-            <div class="msg " id="msgPHP"></div>
+
 
         </main>
         <script src="./index.js"></script>
@@ -340,7 +349,7 @@
             }
         </script>
 
-         <!-- <script>
+        <!-- <script>
              const hoy= new Date();
              const año= hoy.getFullYear();
              const mes=String(hoy.getMonth()+1).padStart(2,'0');
@@ -349,7 +358,7 @@
              document.getElementById('Fecha').min=currentDate;
              document.getElementById('Fecha').valueAsDate = new Date();
         </script> -->
-        
+
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <defs>

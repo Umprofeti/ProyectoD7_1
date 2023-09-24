@@ -71,6 +71,7 @@ cantidadInt.addEventListener('input', () => {
     // Vuelve a unir las partes y establece el valor formateado en el campo de entrada
     cantidadInt.value = parts.join('.');
 })
+
 NumeroCheque.addEventListener('input', () => {
     let inputValue = NumeroCheque.value;
     let sanitizedValue = inputValue.replace(/[^0-9,]/g, '');//este deberia evitar que characteres sean introducidos

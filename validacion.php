@@ -9,7 +9,7 @@
         1 => 'Porfavor ingrese todos los datos en los campos correspondientes',
         2 => 'Formato de Fecha invalida'
     ];
-    var_dump($_POST);
+    /*var_dump($_POST);*/
 
     If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
         echo($Error[1]);
