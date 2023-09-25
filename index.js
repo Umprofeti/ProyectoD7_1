@@ -95,7 +95,7 @@ datepicker.addEventListener("focusout", function() {
                         "Fecha": data 
                     },
                     success: (resp) => {
-                        cantidadString.value =  resp
+                        /* cantidadString.value =  resp */
                         msgPHP.innerHTML = resp
                     }
     })  

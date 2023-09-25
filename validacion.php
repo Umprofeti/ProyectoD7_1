@@ -6,16 +6,20 @@
     $Fecha = $_POST["Fecha"];
 
     $Error = [
-        1 => 'Porfavor ingrese todos los datos en los campos correspondientes!',
         2 => 'Formato de Fecha invalida!!'
     ];
     /*var_dump($_POST);*/
-
+    $jsonObj =  New stdClass();
     If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
-        echo('<i class="fas fa-exclamation-circle "></i> ' . $Error[1]);
-    }elseif($Fecha == ''){
-        echo('<i class="fas fa-exclamation-circle "></i> ' . $Error[2]);
+        echo('<i class="fas fa-exclamation-circle "></i> ');
+        $jsonObj ->code = 40;
+        $jsonObj ->msg = 'Porfavor ingrese todos los datos en los campos correspondientes!';
+        $jsonObj = json_encode($jsonObj);
+        echo($jsonObj);
     }else{
-        echo('<i class="fas fa-check-circle "></i> Datos enviados Correctamente');
+        $jsonObj ->code = 200;
+        $jsonObj ->msg = 'Datos enviados Correctamente';
+        $jsonObj = json_encode($jsonObj);
+        echo($jsonObj);
     }
 ?>
