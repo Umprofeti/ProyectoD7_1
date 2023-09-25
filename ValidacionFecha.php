@@ -1,6 +1,6 @@
 <?php
 $Fecha = $_POST['Fecha'];
 if($Fecha == ''){
-    echo('Formato de fecha invalido');
+    echo('<i class="fas fa-exclamation-circle "></i> Formato de Fecha invalida!');
 }
 ?>

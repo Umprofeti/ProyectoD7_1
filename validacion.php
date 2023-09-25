@@ -6,16 +6,16 @@
     $Fecha = $_POST["Fecha"];
 
     $Error = [
-        1 => 'Porfavor ingrese todos los datos en los campos correspondientes',
-        2 => 'Formato de Fecha invalida'
+        1 => 'Porfavor ingrese todos los datos en los campos correspondientes!',
+        2 => 'Formato de Fecha invalida!!'
     ];
     /*var_dump($_POST);*/
 
     If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
-        echo($Error[1]);
+        echo('<i class="fas fa-exclamation-circle "></i> ' . $Error[1]);
     }elseif($Fecha == ''){
-        echo($Error[2]);
+        echo('<i class="fas fa-exclamation-circle "></i> ' . $Error[2]);
     }else{
-        echo('Datos enviados Correctamente');
+        echo('<i class="fas fa-check-circle "></i> Datos enviados Correctamente');
     }
 ?>
