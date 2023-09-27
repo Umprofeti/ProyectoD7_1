@@ -11,14 +11,16 @@
     /*var_dump($_POST);*/
     $jsonObj =  New stdClass();
     If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
-        echo('<i class="fas fa-exclamation-circle "></i> ');
+        
         $jsonObj ->code = 40;
         $jsonObj ->msg = 'Porfavor ingrese todos los datos en los campos correspondientes!';
+        // echo('<i class="fas fa-exclamation-circle "></i> ');
         $jsonObj = json_encode($jsonObj);
         echo($jsonObj);
     }else{
         $jsonObj ->code = 200;
         $jsonObj ->msg = 'Datos enviados Correctamente';
+        // echo('<i class="fas fa-check-circle "><i/> ');
         $jsonObj = json_encode($jsonObj);
         echo($jsonObj);
     }

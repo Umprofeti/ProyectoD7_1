@@ -96,7 +96,9 @@ datepicker.addEventListener("focusout", function() {
                     },
                     success: (resp) => {
                         /* cantidadString.value =  resp */
-                        msgPHP.innerHTML = resp
+                        resp = JSON.parse(resp);
+                        console.log(resp.code)
+                        msgPHP.innerHTML = resp.code
                     }
     })  
   });
