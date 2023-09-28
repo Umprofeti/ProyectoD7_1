@@ -62,10 +62,14 @@ cantidadInt.addEventListener('input', () => {
     }
     // Divide el valor en dos partes: parte antes del punto y parte después del punto
     let parts = sanitizedValue.split('.');
-    
+   
+
     // Si hay más de una parte (es decir, hay un punto decimal), formatea la parte después del punto a dos caracteres
     if (parts.length > 1) {
         parts[1] = parts[1].slice(0, 2); // Limita la parte después del punto a dos caracteres
+        if(parts[2] == ''){
+            parts.pop();
+        }
     }
     // Vuelve a unir las partes y establece el valor formateado en el campo de entrada
     cantidadInt.value = parts.join('.');

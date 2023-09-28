@@ -113,11 +113,9 @@ if($CantString != ''){
         $result = translate(intval($CantString));
 
         $decimal = (intval($CantString) - $CantString);
-        if(abs($decimal*100) == 0){
-            echo ucfirst($result);
-        }else{
-            echo ucfirst($result) . ' con ' . round(abs($decimal * 100)) . '/100';
-        }
+        
+        $decimal = abs($decimal * 100);
+        echo ucfirst($result) . ' con ' . sprintf("%02d", $decimal) . '/100';
     }  
 }
 ?>
