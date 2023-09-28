@@ -13,13 +13,13 @@
     If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
         
         $jsonObj ->code = 40;
-        $jsonObj ->msg = 'Porfavor ingrese todos los datos en los campos correspondientes!';
+        $jsonObj ->msg = '<span class="error-msg"><i class="fas fa-exclamation-circle"></i> Por favor ingrese todos los datos en los campos correspondientes!';
         // echo('<i class="fas fa-exclamation-circle "></i> ');
         $jsonObj = json_encode($jsonObj);
         echo($jsonObj);
     }else{
         $jsonObj ->code = 200;
-        $jsonObj ->msg = 'Datos enviados Correctamente';
+        $jsonObj ->msg = '<span class="success-msg"><i class="fas fa-check-circle "></i> Datos enviados Correctamente!';
         // echo('<i class="fas fa-check-circle "><i/> ');
         $jsonObj = json_encode($jsonObj);
         echo($jsonObj);

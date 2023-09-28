@@ -97,7 +97,7 @@
     div.msg {
         margin: 1% auto;
         display: flex;
-        flex-direction: center;
+        flex-direction: row;
         align-items: center;
         max-width: 50%;
         padding: 2%;
@@ -109,6 +109,11 @@
         background: rgba(255, 87, 51, 0.2);
 
     }
+    
+    .success-msg, .error-msg i {
+        margin-right: 2% auto;
+    }
+
 
     body {
         margin: 0;
@@ -311,7 +316,9 @@
                 </div>
                 <!-- Mensajes de error -->
                 <!-- <div class="msg " id="msg"></div> -->
-                <div class="msg " id="msgPHP"></div>
+                <div class="msg " id="msgPHP">
+                    <i class="fas fa-exclamation-circle "></i>
+                </div>
                 <!-- <button value="Enviar" onclick="sendForm()">Enviar</button> -->
             </form>
 
@@ -344,7 +351,9 @@
                         "DGasto": $("#DGasto").val()
                     },
                     success: (resp) => {
-                        msgPHP.innerHTML = resp
+                        resp = JSON.parse(resp);
+                        console.log(resp.code)
+                        msgPHP.innerHTML = resp.msg
                     }
                 })
             }
