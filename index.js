@@ -97,8 +97,16 @@ datepicker.addEventListener("focusout", function() {
                         resp = JSON.parse(resp);
                         if(resp.code === 41){
                             // Aquí colocar los estilos necesarios para que el JS modifique la caja
+                            if(msgPHP.classList.contains("success-msg")){
+                                msgPHP.classList.remove("success-msg");
+                            }
                             msgPHP.classList.add("error-msg")
-                            msgPHP.innerHTML = resp.msg
+                                msgPHP.innerHTML = resp.msg
+                            
+                        }
+                        if(resp.code === 200){
+                            msgPHP.classList.remove("error-msg");
+                            msgPHP.innerHTML = '';
                         }
                     }
     })  

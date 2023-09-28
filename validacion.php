@@ -10,10 +10,15 @@
     ];
     /*var_dump($_POST);*/
     $jsonObj =  New stdClass();
-    If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == ''){
+    If($NCheque == '' || $Nombre == '' || $Cant == '' || $DGasto == '' || $Fecha = ''){
         
         $jsonObj ->code = 40;
         $jsonObj ->msg = 'Por favor ingrese todos los datos en los campos correspondientes!';
+        $jsonObj = json_encode($jsonObj);
+        echo($jsonObj);
+    }elseif ($Fecha = '') {
+        $jsonObj ->code = 41;
+        $jsonObj ->msg = 'Formato de Fecha invalida!';
         $jsonObj = json_encode($jsonObj);
         echo($jsonObj);
     }else{

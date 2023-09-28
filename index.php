@@ -367,6 +367,7 @@
                                 msgPHP.classList.remove("error-msg")
                                 msgPHP.classList.add("success-msg")
                             }
+                            msgPHP.classList.add("success-msg")
                             msgPHP.innerHTML = resp.msg
                         }
                 
