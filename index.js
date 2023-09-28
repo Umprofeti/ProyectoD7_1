@@ -62,7 +62,7 @@ cantidadInt.addEventListener('input', () => {
     }
     // Divide el valor en dos partes: parte antes del punto y parte después del punto
     let parts = sanitizedValue.split('.');
-   
+    
 
     // Si hay más de una parte (es decir, hay un punto decimal), formatea la parte después del punto a dos caracteres
     if (parts.length > 1) {
@@ -77,7 +77,7 @@ cantidadInt.addEventListener('input', () => {
 
 NumeroCheque.addEventListener('input', () => {
     let inputValue = NumeroCheque.value;
-    let sanitizedValue = inputValue.replace(/[^0-9,]/g, '');//este deberia evitar que characteres sean introducidos
+    let sanitizedValue = inputValue.replace(/[^0-9]/g, '');//este deberia evitar que characteres sean introducidos
     if (inputValue !== sanitizedValue) {
         NumeroCheque.value = sanitizedValue;
     }
