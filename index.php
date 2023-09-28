@@ -104,12 +104,16 @@
         text-align: center;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        border: 2px solid #FF0000;
         border-radius: 15px;
-        background: rgba(255, 87, 51, 0.2);
-
     }
-    
+    .success-msg{
+        border: 2px solid #00FF00;
+        background: rgba(0, 255, 0, 0.2);
+    }
+    .error-msg{
+        background: rgba(255, 87, 51, 0.2);
+        border: 2px solid #FF0000;
+    }
     .success-msg, .error-msg i {
         margin-right: 2% auto;
     }
@@ -317,7 +321,7 @@
                 <!-- Mensajes de error -->
                 <!-- <div class="msg " id="msg"></div> -->
                 <div class="msg " id="msgPHP">
-                    <i class="fas fa-exclamation-circle "></i>
+                    <!-- <i class="fas fa-exclamation-circle "></i> -->
                 </div>
                 <!-- <button value="Enviar" onclick="sendForm()">Enviar</button> -->
             </form>
@@ -352,8 +356,20 @@
                     },
                     success: (resp) => {
                         resp = JSON.parse(resp);
-                        console.log(resp.code)
-                        msgPHP.innerHTML = resp.msg
+                        if(resp.code === 40){
+                            // Aquí colocar los estilos necesarios para que el JS modifique la caja
+                            msgPHP.classList.add("error-msg")
+                            msgPHP.innerHTML = resp.msg
+                        }
+                        if(resp.code === 200){
+                            // Aquí colocar los estilos necesarios para que el JS modifique la caja
+                            if(msgPHP.classList.contains("error-msg")){
+                                msgPHP.classList.remove("error-msg")
+                                msgPHP.classList.add("success-msg")
+                            }
+                            msgPHP.innerHTML = resp.msg
+                        }
+                
                     }
                 })
             }

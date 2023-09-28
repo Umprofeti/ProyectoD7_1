@@ -46,7 +46,6 @@ CantidadCheque.addEventListener('input', () => {
                         data: data,
                         success: (resp) => {
                             cantidadString.value =  resp
-                            msgPHP.innerHTML = resp
                         }
         })   
 })
@@ -95,10 +94,12 @@ datepicker.addEventListener("focusout", function() {
                         "Fecha": data 
                     },
                     success: (resp) => {
-                        /* cantidadString.value =  resp */
                         resp = JSON.parse(resp);
-                        console.log(resp.code)
-                        msgPHP.innerHTML = resp.msg
+                        if(resp.code === 41){
+                            // Aquí colocar los estilos necesarios para que el JS modifique la caja
+                            msgPHP.classList.add("error-msg")
+                            msgPHP.innerHTML = resp.msg
+                        }
                     }
     })  
   });
