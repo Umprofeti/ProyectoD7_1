@@ -7,6 +7,7 @@ var formCheque = document.getElementById("formCheque");
 var msgPHP = document.getElementById("msgPHP");
 var Nombre = document.getElementById("Nombre");
 var DGasto = document.getElementById("DGasto");
+const datepicker = document.querySelector("#Fecha");
 const validarCampoNumero = (inputValue) => {
     let RegNum = new RegExp('([0-9)]+)');
     let result = RegNum.test(inputValue)
@@ -87,7 +88,7 @@ DGasto.addEventListener('focusout', ()=> {
     sendForm();
 })
 
-const datepicker = document.querySelector("#Fecha");
+
 
 datepicker.addEventListener("focusout", function() {
     let data = $("#Fecha").val()
@@ -100,12 +101,13 @@ datepicker.addEventListener("focusout", function() {
                     success: (resp) => {
                         resp = JSON.parse(resp);
                         if(resp.code === 41){
+                            datepicker.value = '';
                             // Aquí colocar los estilos necesarios para que el JS modifique la caja
                             if(msgPHP.classList.contains("success-msg")){
                                 msgPHP.classList.remove("success-msg");
                             }
                             msgPHP.classList.add("error-msg")
-                                msgPHP.innerHTML = resp.msg
+                            msgPHP.innerHTML = `<i class="fas fa-exclamation-circle "></i>${resp.msg}`
                             
                         }
                         if(resp.code === 200){
